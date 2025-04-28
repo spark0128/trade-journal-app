@@ -2,7 +2,7 @@
   "name": "trade-journal-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://YOUR_GITHUB_USERNAME.github.io/trade-journal-app",
+  "homepage": "https://spark0128.github.io/trade-journal-app",
   "dependencies": {
     "@devexperts/dxcharts-lite": "^2.7.6",
     "@testing-library/dom": "^10.4.0",
