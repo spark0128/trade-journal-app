@@ -4,13 +4,8 @@ import { AdvancedChart } from "react-tradingview-embed";
 import jsPDF from "jspdf";
 
 // Constants for P/L calculation
-const TICK_SIZE = 0.1;
-const LOT_SIZE = 1;
 // XAUUSD (Gold) multiplier - $1 move equals this amount per lot
 const XAUUSD_MULTIPLIER = 100;  // Updated from 10 to 100 for correct P/L calculation
-
-// Fixed Forex.com XAUUSD chart (timestamps in sync; price is illustrative)
-const chartSymbol = 'OANDA:XAUUSD';
 
 // Convert Date to New York time string
 const toNYTime = (dt) =>
@@ -25,16 +20,8 @@ const toNYTime = (dt) =>
     hour12: false,
   });
 
-// Parse timestamp to Date
-const parseTime = (raw) => {
-  const dt = new Date(raw);
-  if (isNaN(dt)) throw new Error(`Invalid time: ${raw}`);
-  return dt;
-};
-
 // Add after imports
 const DEBUG = true; // Enable/disable detailed logging
-const INCLUDE_OPEN_POSITIONS = true; // Show unmatched entries as open positions
 
 export default function TradeViewer() {
   const [tradeList, setTradeList] = useState([]);
@@ -595,7 +582,8 @@ export default function TradeViewer() {
                     }`}>
                       {trade.originalPnlString || (trade.profitLoss < 0 
                         ? `-$${Math.abs(trade.profitLoss).toFixed(2)}` 
-                        : `$${trade.profitLoss.toFixed(2)}`)}
+                        : `$${trade.profitLoss.toFixed(2)}`)
+                      }
                     </div>
                   </div>
                   
